@@ -1,0 +1,56 @@
+0.首先在电脑上安装好node
+$npm -v  查看是否安装了npm node
+
+1.初始化npm配置文件 项目根目录下 
+$npm init -y
+之后就会在根目录下生成package.json文件
+编辑package.json文件到默认配置
+
+2.安装我们依赖的gulp插件
+首先全局安装gulp 
+$npm i -g gulp 
+然后在根目录下安装gulp 3.9.1
+$npm i -D gulp@3.9.1
+安装完成后 项目根目录下就有了node-modules文件夹了
+并且也增加了package-lock.json文件
+并且这时候就能在package.json 里面看见gulp的版本号了
+
+3. 安装gulp-sass 组件 还是在根目录下
+$npm i gulp-sass -D
+-D 代表 --save-dev 是一个效果
+这个组件依赖node-sass 此包比较大 可以通过淘宝的镜像下载
+此后package.json文件里面就多了gulp-sass版本号
+
+4.在项目根目录下创建gulpfile.js
+这个文件就是gulp的配置文件
+这个文件里面就是设置配置sass的方法和路径
+然后到npmjs.com/package/gulp-sass下面直接拷贝 Basic Usage里面的内容到gulpfile.js里
+并且对gulpfile.js做些许修改
+这样就可以通过到根目录下运行  $gulp来监听sass的变化了
+如果发生错误就用ctrl+c来停止监听，再运行gulp继续监听
+
+5.全局安装live-server 来帮助我们启动web服务
+$npm i -g live-server
+
+然后进入项目根目录(index.html所在位置)
+直接输入 $live-server   这样就直接打开了index.html作为首页 并且发布获得地址 
+这样就能直接用移动端访问到该app网址了
+
+6.chrome浏览器 远程真机调试
+1-手机必须打开usb调试功能(android)
+2-手机要通过USB连接到电脑
+3-手机必须安装android版本的chrome浏览器
+--保证以上几点之后，手机就可以通过Chrome来进行远程真机调试了
+
+chrome可以进行远程链接调试
+第一步:打开开发人员工具
+第二步:点击菜单栏的更多工具按钮
+第三步:选择远程device功能
+第四部:选择我门的手机设备，然后进行点inspect按钮
+
+7.安装gulp的相关自动化流程工具
+-在package.json文件下添加”build”:”gulp dist”
+-在项目根目录下输入npm i 就可以直接安装package.json里面所有的dependencies和devDependencies
+-然后在项目根目录下输入$npm run build (这相当于run了gulp dist)
+
+直接下载老马的 gulpfile.js 和 package.json文件就可
