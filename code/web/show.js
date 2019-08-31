@@ -3,7 +3,9 @@ define(['jquery'], function ($) {
     return {
         do: function () {
             console.log('I am a show module');
-                $(document.body).append('<div>I am dynamically generated</div>');
+            $(function(){
+                $(document.body).append('<div>I am dynamically generated div</div>');
+            });
         }
-    }
+    };
 });
