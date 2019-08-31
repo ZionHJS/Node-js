@@ -29,7 +29,7 @@ n.myShow();
 const stringW = require('string-width'); //string-width是从npm上下载的模块
 var num = stringW('this is stringW');
 console.log(num);
-console.log(module.paths);  //找当前模块的路径 就找到了node_nodule文件夹下面了
+console.log(module.paths); //找当前模块的路径 就找到了node_nodule文件夹下面了
 
 
 

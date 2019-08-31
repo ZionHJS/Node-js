@@ -7,12 +7,18 @@
     "lib": "lib"
   },
   "scripts": {
+    "start":"echo \"program is running\"",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],
   "author": "zion hugn",
   "license": "MIT",
   "dependencies": {
+    "jQuery": "^1.7.4",
     "string-width": "^4.1.0"
+  },
+  "devDependencies": {
+    "gulp": "^3.9.1",
+    "gulp-concat": "^2.6.1"
   }
 }
