@@ -2,7 +2,7 @@
   "name": "code",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js", 
+  "main": "index.js",
   "directories": {
     "lib": "lib"
   },
@@ -11,5 +11,8 @@
   },
   "keywords": [],
   "author": "zion hugn",
-  "license": "MIT"
+  "license": "MIT",
+  "dependencies": {
+    "string-width": "^4.1.0"
+  }
 }
