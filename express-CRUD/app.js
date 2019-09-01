@@ -12,6 +12,8 @@ app.get('./user/list', (req,res)=>{
     res.end();
 });
 
+console.log(11223344);
+
 app.listen(59999, () => {
     console.log('http://127.0.0.1:59999');
-});;
+});
