@@ -1,6 +1,7 @@
 const express = require('express');
 const path = require('path');
 const art_express = require('express-art-template');
+const userService = require('./service/userService.js');
 
 const app = express();   //创建一个app对象
 
@@ -19,8 +20,7 @@ app.get('./user/list', (req,res)=>{
     //express引擎会自动到view文件夹下搜索文件 如果是子文件夹则需要指明是哪个文件夹
     res.render('./users/userlist2.art',{
         title:'hello!!!',
-        users:[{name:'david',id:"10011"},
-        {name:'mike',id:"10012"}]
+        users:userService.getUsers()
     });
 });
 
