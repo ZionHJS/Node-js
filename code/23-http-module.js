@@ -12,7 +12,7 @@ http.createServer(function(req, res){
     res.write('hello 123');
     res.end();
 
-    //伪代码:
+    //伪代码: 回调定域问题
     // fs.readFile(path, ()=>{
     //     fs.readFile(path,()=>{
     //         fs.readFile(path,()=>{
