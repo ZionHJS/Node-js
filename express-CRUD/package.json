@@ -1,7 +1,6 @@
 {
   "name": "code",
   "version": "1.0.0",
-  "description": "",
   "main": "index.js",
   "directories": {
     "lib": "lib"
@@ -23,5 +22,6 @@
   "devDependencies": {
     "gulp": "^3.9.1",
     "gulp-concat": "^2.6.1"
-  }
+  },
+  "description": ""
 }
