@@ -4,11 +4,11 @@ function Stu(name){
 
 Stu.prototype = {
     constructor:Stu,
-    //get 代表这是一个属性
+    //get语法将对象属性绑定到查询该属性时将被调用的函数。
     get Name(){
         return this._name;
     },
-    //set 属性
+    //Set 对象允许你存储任何类型的唯一值，无论是原始值或者是对象引用。
     set Name(val){
         if(val){
             this._name = val;
