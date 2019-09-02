@@ -1,16 +1,41 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link href="https://cdn.bootcss.com/bulma/0.7.5/css/bulma.css" rel="stylesheet">
     <title>userlist-2</title>
 </head>
+
 <body>
-    <h2>{{title}}</h2>
-    <h3>Hello!</h3>
-    {{each users as val index}}
-    <p>{{index}} ---- {{value.id}} ---- {{val.name}}</p>
-    {{/each}}
+    <table class="table">
+        <thead>
+            <tr>
+                <th>No.</th>
+                <th>Name</th>
+                <th>Phome</th>
+                <th>Email</th>
+                <th>Address</th>
+                <th>Zip</th>
+                <th>Birth</th>
+            </tr>
+        </thead>
+        <tbody>
+            {{each users as val index}}
+            <tr>
+                <td>{{val.id}}</td>
+                <td>{{val.name}}</td>
+                <td>{{val.phone}}</td>
+                <td>{{val.email}}</td>
+                <td>{{val.address}}</td>
+                <td>{{val.zip}}</td>
+                <td>{{val.birthday}}</td>
+            </tr>
+            {{/each}}
+        </tbody>
+    </table>
 </body>
+
 </html>

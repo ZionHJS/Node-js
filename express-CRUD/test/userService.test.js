@@ -19,7 +19,7 @@ describe('userServiceTest',function(){
     after(function(){
         //做一些清理工作　
         console.log('... after');
-    })
+    });
     
     //定义测试用例 使用it 测试 getUsers()是否达到预期
     it('#getUsers()', function(){

@@ -18,10 +18,17 @@ app.get('./user/list', (req,res)=>{
 
     //res对象的render方法 第一个参数是模版的文件名 第二个参数是给模版的数据
     //express引擎会自动到view文件夹下搜索文件 如果是子文件夹则需要指明是哪个文件夹
-    res.render('./users/userlist2.art',{
-        title:'hello!!!',
-        users:userService.getUsers()
-    });
+    // res.render('./users/userlist2.art',{
+    //     title:'hello!!!',
+    //     users:userService.getUsers()
+    // });
+    
+    //实现分页获取数据 page, size
+    const page = parseInt(req.query.page) || 1;
+    const size = parseInt(req.query.size) || 10;
+    // console.log(page,size);
+    const data = userService.getPageUsers(page, size);
+    res.render('./views/users/userlist2.art', data);
 });
 
 console.log(11223344555666);
