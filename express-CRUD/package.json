@@ -25,7 +25,8 @@
     "gulp": "^3.9.1",
     "gulp-concat": "^2.6.1",
     "mockjs": "^1.0.1-beta3",
-    "nodemon": "^1.19.1"
+    "nodemon": "^1.19.1",
+    "should": "^13.2.3"
   },
   "description": ""
 }

@@ -10,7 +10,24 @@ exports.getUsers = function(){
 
 //page第几页 size每页有多少条
 exports.getPageUsers = function(page, size){
-    return {users: dbjson.users.slice((page - 1)*size, page*size),
+    //对传入的参数做相关的处理
+    //page:必须是数字类型，而且值必须大于0
+    if(typeof(page) !== 'number' && page <= 0){
+        return{
+            code:0,
+            msg:'page parameter is not qualified!'
+        }
+    }
+    if(typeof(size) !== 'number' && size <= 0){
+        return{
+            code:0,
+            msg:'size parameter is not qualified!'
+        }
+    }
+
+    return {
+        users: dbjson.users.slice((page - 1)*size, page*size),
             code:1,
-            msg:'Obtain success!'};
+            msg:'Obtain Success!'
+    };
 };
