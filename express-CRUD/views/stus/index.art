@@ -1,12 +1,54 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script src="https://cdn.bootcss.com/jquery/1.12.4/jquery.min.js"></script>
     <title>list-page</title>
 </head>
+
 <body>
     <h1>google.com offline full-stack</h1>
+    <!-- 显示用户数据的列表 -->
+    <thead>
+        <tr>
+            <th>No.</th>
+            <th>Name</th>
+            <th>Number</th>
+            <th>Mail</th>
+            <th>Address</th>
+            <th>Post-Code</th>
+            <th>BrithDay</th>
+            <th>Edit</th>
+        </tr>
+    </thead>
+    <tbody id="tbData">
+    </tbody>
+    <script>
+        $(function () {
+            //初始化表格数据
+            function initTableData() {
+                $.get('/api/pageuser', function (retData) {
+                    let strTemp = '';
+                    //data:{page:3, size:10, count:100, data:[...]}
+                    for (var i = 0; i < retData.data.length; i++) {
+                        //<tr><td></td></tr>
+                        strTemp += "<tr>";
+                            strTemp += '  <td>' + retData.data[i].id + '</td>';
+                            strTemp += '  <td>' + retData.data[i].name + '</td>';
+                            strTemp += '  <td>' + retData.data[i].phone + '</td>';
+                            strTemp += '  <td>' + retData.data[i].email + '</td>';
+                            strTemp += '  <td>' + retData.data[i].address + '</td>';
+                            strTemp += '  <td>' + retData.data[i].zip + '</td>';
+                            strTemp += '  <td>' + retData.data[i].birthday + '</td>';
+                        strTemp += "</tr>";
+                    }
+                });
+            }
+        });
+    </script>
 </body>
+
 </html>
