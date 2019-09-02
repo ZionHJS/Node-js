@@ -55,12 +55,16 @@ app.post('/user/add' ,upload.array() ,(req,res) => {
     //req.param   通过路由的方式获取路由的参数
     //req.body    获取表单的参数
 
-    console.log('------S => body-----');
-    console.dir(req.body);
+    // console.log('------S => body-----');
+    // console.dir(req.body);
 
-    console.log(req.body.name);
+    // console.log(req.body.name);
 
-    console.log('------E => body-----');
+    // console.log('------E => body-----');
+
+    //把数据保存到db.json文件中
+    userService.addUser(req.body);
+
     res.redirect('./user/list');
 });
 
