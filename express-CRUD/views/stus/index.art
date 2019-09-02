@@ -12,8 +12,9 @@
 <body>
     <h1>google.com offline full-stack</h1>
     <input type="button" value="add" class="button is-large has-text-danger">
-    
+
     <!-- 显示用户数据的列表 -->
+    <table>
     <thead>
         <tr>
             <th>No.</th>
@@ -28,6 +29,7 @@
     </thead>
     <tbody id="tbData">
     </tbody>
+    </table>
     <script>
         $(function () {
             //初始化表格数据
