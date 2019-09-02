@@ -88,6 +88,10 @@ describe('userServiceTest',function(){
         edata.should.be.a.Object();
         edata.code.should.eql(1);
         edata.users.length.should.eql(5);
+        edata.should.containEql({
+            code:1,
+            msg:'obtain success'
+        });
     });
 });
 

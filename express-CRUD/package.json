@@ -8,7 +8,8 @@
   "scripts": {
     "start": "echo \"program is running\"",
     "dev": "gulp",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test_cover": "istanbul cover _mocha",
+    "test":"mocha"
   },
   "keywords": [],
   "author": "zion hugn",
