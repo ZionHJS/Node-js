@@ -13,9 +13,33 @@
     <input type="button" value="jq get backend get" id="getBtn">
     <input type="button" value="jq get backend post" id="postBtn">
     <input type="button" value="jq get backend ajax" id="ajaxBtn">
+    <input type="button" value="jq get backend getJSON" id="getJSONBtn">
+    <input type="button" value="jq get backend getScript" id="getScriptBtn">
 
     <script>
+        function callback_msg(val){
+            console.log('data comes from server-side', val);
+        }
+
         $(function () {
+            //getScript
+            $('#getScriptBtn').on('click', function(e){
+                //下载服务器端的js脚本 并立即执行
+                $.getScript('js/a.js', function(data){
+                    console.log(data);
+                })
+            });
+
+
+            //getJSON的请求方法
+            $('#getJSONBtn').on('click', function(){
+                $.getJSON('user.json', '', function(data){ //data是一个对象
+                    console.log(data);
+                    console.log(data.id);
+                });
+            });
+
+            //ajax的请求方法
             $('#ajaxBtn').on('click', function () {
                 //通过$.ajx 方法发送ajax请求
                 $.ajax({
@@ -30,6 +54,7 @@
                 console.log('ajax being sent!');
             });
 
+            //get的请求方法
             $('#getBtn').on('click', function () {
                 //jQuery ajax方法 get() post() getJSON() load()
                 $.get('/user.json?id=9', 'name=222', function (data, status, xhr) {
