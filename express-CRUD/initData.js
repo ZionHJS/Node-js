@@ -34,7 +34,8 @@ let data = Mock.mock({
     }]
 });
 //...三个点代表展开符 es6展开运算符 用来展开字符串，对象，数组
-jsondb.users.push(...data.users);
+// jsondb.users.push(...data.users);
+jsondb.users = data.users;
 //把数据写入db.json  
 //path的地方是数据写入的位置
 //.stringify是把内容转化为字符串
