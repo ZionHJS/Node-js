@@ -106,6 +106,11 @@ app.post('/user/edit',(req, res)=>{
 
 //#endregion
 
+//#region post
+app.post('./api/user', (req, res) => {
+    res.json(req.body);
+});
+//#endregion
 app.listen(59999, () => {
     console.log('http://127.0.0.1:59999');
 });

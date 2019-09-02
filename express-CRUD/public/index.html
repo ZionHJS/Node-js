@@ -8,5 +8,53 @@
 </head>
 <body>
     <h1>This is the main-page for static page!</h1>
+    <input type="button" value="Get data from the backend" id="btnGet">
+    <input type="button" value="Post data from the backend" id="btnPOST">
+
+    <script>
+        window.onload = function(){
+            var btnGet = document.getElementById('btnGet');
+            //#region GET 请求获取数据
+            btnGet.onclick = function(){
+                //跟后台进行交互
+                //第一步 创建xhr对象
+                var xhr = new XMLHttpRequest();
+
+                //第二步 链接服务器端
+                xhr.open('GET','./user.json?id=222', true);
+
+                //第三步 发送请求数据
+                xhr.send();
+
+                //第四步 监听状态改变的事件，并处理后台返回的数据
+                xhr.onreadystatechange = function(){
+                    console.log('readyStates:', xhr.readyState);   //当前xhr请求状态
+                    console.log('status:', xhr.status);   //后台响应的http报文状态码
+                    if(xhr.readyState == 4 && xhr.status == 200){
+                        //请求成功
+                        console.log(xhr.responseText);
+                    }
+                }
+            };
+            //#endregion
+
+            //#region POST 请求获取数据
+            
+            //#endregion
+            var btnPost = document.getElementById('btnPOST');
+            btnPost.onclick = function(){
+                var xhr = new XMLHttpRequest();
+                xhr.open('POST','/api/user',true);
+                xhr.setRequestHeader('Content-type','application/x-www-form-urlencoded');
+                xhr.send('id=9&name=david&age=70');
+
+                xhr.onreadystatechange = function(){
+                    if(xhr.readyState == 4 && xhr.status == 200){
+                        console.log(xhr.responseText);
+                    }
+                }
+            };
+        };
+    </script>
 </body>
 </html>
