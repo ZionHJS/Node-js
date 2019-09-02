@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,32 +8,49 @@
     <script src="https://cdn.bootcss.com/jquery/1.12.4/jquery.min.js"></script>
     <title>jQuery-Ajax</title>
 </head>
+
 <body>
-    <input type="button" value="jq get backend" id="getBtn">
-    <input type="button" value="jq get backend" id="postBtn">
+    <input type="button" value="jq get backend get" id="getBtn">
+    <input type="button" value="jq get backend post" id="postBtn">
+    <input type="button" value="jq get backend ajax" id="ajaxBtn">
 
     <script>
-        $(function(){
-            $('#getBtn').on('click',function(){
+        $(function () {
+            $('#ajaxBtn').on('click', function () {
+                //通过$.ajx 方法发送ajax请求
+                $.ajax({
+                    async: false,
+                    url: '/api/user',
+                    type: 'POST',
+                    data: 'id=9&name=19222',   //data:字符串/json对象
+                    success: function (data) {
+                        console.log(data);
+                    }
+                });
+                console.log('ajax being sent!');
+            });
+
+            $('#getBtn').on('click', function () {
                 //jQuery ajax方法 get() post() getJSON() load()
-                $.get('/user.json?id=9','name=222',function(data, status, xhr){
+                $.get('/user.json?id=9', 'name=222', function (data, status, xhr) {
                     console.log(data.id);
                     console.log(status);
-                },'json');
-                
+                }, 'json');
+
                 //简单写法 get
-                $get('./user.json',function(data){
+                $get('./user.json', function (data) {
                     console.log(data);
                 });
+            });
 
-                //简单写法 post
-                $('postBtn').on('click',function(){
-                    $.post('/api/user', {id:344, name:'david'}, function(data){
-                        console.log(data);
-                    });
+            //简单写法 post
+            $('postBtn').on('click', function () {
+                $.post('/api/user', { id: 344, name: 'david' }, function (data) {
+                    console.log(data);
                 });
             });
         });
     </script>
 </body>
+
 </html>
