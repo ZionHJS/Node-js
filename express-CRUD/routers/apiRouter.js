@@ -28,4 +28,17 @@ router.get('/pageUser', (req, res) => {
     });
 });
 
+router.post('/deluser/:id', (req, res) => {
+    const id = parseint(req.params.id);
+    if(isNaN(id)){
+        res.json({
+            msg:'delete failed, id is wrong',
+            code:0
+        });
+        return;
+    }
+
+    res.json(userService.delUser(id));
+});
+
 module.exports = router;

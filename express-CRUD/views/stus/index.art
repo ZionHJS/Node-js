@@ -36,15 +36,50 @@
                     for (var i = 0; i < retData.data.length; i++) {
                         //<tr><td></td></tr>
                         strTemp += "<tr>";
-                            strTemp += '  <td>' + retData.data[i].id + '</td>';
-                            strTemp += '  <td>' + retData.data[i].name + '</td>';
-                            strTemp += '  <td>' + retData.data[i].phone + '</td>';
-                            strTemp += '  <td>' + retData.data[i].email + '</td>';
-                            strTemp += '  <td>' + retData.data[i].address + '</td>';
-                            strTemp += '  <td>' + retData.data[i].zip + '</td>';
-                            strTemp += '  <td>' + retData.data[i].birthday + '</td>';
+                        strTemp += '  <td>' + retData.data[i].id + '</td>';
+                        strTemp += '  <td>' + retData.data[i].name + '</td>';
+                        strTemp += '  <td>' + retData.data[i].phone + '</td>';
+                        strTemp += '  <td>' + retData.data[i].email + '</td>';
+                        strTemp += '  <td>' + retData.data[i].address + '</td>';
+                        strTemp += '  <td>' + retData.data[i].zip + '</td>';
+                        strTemp += '  <td>' + retData.data[i].birthday + '</td>';
+                        strTemp += '  <td><a class="delBtn" uid="' + retData.data[i].id + '" href="#">DELETE</a></td>';
                         strTemp += "</tr>";
                     }
+                    $('#tbData').html(strTemp);
+
+                    //动态创建的元素 绑定事件:两种方法
+                    //第一种:标签加载到页面上去之后 再绑定点击事件 (不推荐)
+                    // $('#delBtn').on('click', function(){
+                    //     alert($(this).attr('uid'));
+                    // });
+                    //第二种:使用事件委托的方式去绑定事件
+                    $('#tbData').on('click', 'dleBtn', function (e) {
+                        // alert('===>'+ $(this).attr('uid'));
+                        //向后台发送ajax请求 删除用户数据 id
+                        var id = $(this).attr('uid');
+                        var aDom = $(this);
+
+                        if (!confirm('please confirm DELETE')) {
+                            return;
+                        }
+                        $.ajax({
+                            url:'/api/deluser/' + id,
+                            data:'id='+id,
+                            type:'POST',
+                            success: function(data){
+                                if(data.code == 1){
+                                    // alert('delete success!');
+                                    //把页面上的数据删除掉
+                                    aDom.parent().parent().fadeOut();
+                                    //重新加载表格数据
+                                    initTableData();
+                                }else{
+                                    alert('delete failed');
+                                }
+                            }
+                        });
+                    });
                 });
             }
         });
