@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script src="./js/ajaxHelper.js"></script>
+    <title>Demo-Ajax</title>
+</head>
+<body>
+    <input type="button" value="get backend data" id="getBtn">
+    <input type="button" value="post backend data" id="postBtn">
+
+    <script>
+        window.onload = function(){
+            var btnGet = document.getElementById('getBtn');
+            btnGet.onclick = function(){
+                ajaxGet('/user.json',function(data){
+                    console.log(data);
+                });
+            }
+            var postBtn = documnent.getElementById('btnPost');
+            btnPost.onclick = function(){
+                ajaxPost('/api/user', 'id=9&com=goole', function(data){
+                    // console.log(data);
+                    // 后台返回的数据就是字符串类型 要转成json 必须自己手动转换
+                    var user = JSON.parse(data);
+                    console.log(user.id);
+                    console.log(user.com);
+                });
+            }
+        }
+    </script>
+</body>
+</html>
