@@ -9,7 +9,9 @@ npm install --save art-template
 npm install --save express-art-template
 
 第二步:项目中设置express的应用art-template模版引擎
-
+const art_express = require('express-art-template');
+//设置art的模版引擎
+app.engine('art', art_express);
 
 
 
