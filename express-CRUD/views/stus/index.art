@@ -11,6 +11,8 @@
 
 <body>
     <h1>google.com offline full-stack</h1>
+    <input type="button" value="add" class="button is-large has-text-danger">
+    
     <!-- 显示用户数据的列表 -->
     <thead>
         <tr>
@@ -29,6 +31,9 @@
     <script>
         $(function () {
             //初始化表格数据
+            initTableData();
+            initBindDelEvent();
+
             function initTableData() {
                 $.get('/api/pageuser', function (retData) {
                     let strTemp = '';
@@ -81,6 +86,11 @@
                         });
                     });
                 });
+
+                //事件委托的方式绑定删除
+                function initBindDelEvent(){
+                    
+                }
             }
         });
     </script>
