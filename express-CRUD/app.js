@@ -3,7 +3,17 @@ const path = require('path');
 const art_express = require('express-art-template');
 const userService = require('./service/userService.js');
 
+//使用一下中间件 需要安装
+const bodyParser = require('body-parser');
+const multer = require('multer');
+
 const app = express();   //创建一个app对象
+
+app.use(bodyParser.json()); // for parsing application/json
+app.use(bodyParser.urlencoded({ extended: true })); // for parsing application/x-www-form-urlencoded
+
+//创建一个upload对象 用于处理form-data方式传递的数据
+let upload = multer();
 
 //设置art的模版引擎
 app.engine('art', art_express);
@@ -38,8 +48,19 @@ app.get('./user/add',(req,res)=>{
     res.render('./views/users/add.art');
 });
 
-app.post('/user/add',(req,res) => {
-    //res.send('ok');
+//添加页面 提交按钮点击后 表单提交到当前请求中进行处理
+app.post('/user/add' ,upload.array() ,(req,res) => {
+    //拿到请求数据的三种方式:
+    //req.query   获取请求的地址中的参数
+    //req.param   通过路由的方式获取路由的参数
+    //req.body    获取表单的参数
+
+    console.log('------S => body-----');
+    console.dir(req.body);
+
+    console.log(req.body.name);
+
+    console.log('------E => body-----');
     res.redirect('./user/list');
 });
 
