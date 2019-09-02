@@ -2,6 +2,8 @@ const express = require('express');
 const path = require('path');
 const art_express = require('express-art-template');
 const userService = require('./service/userService.js');
+const router = require('./routers/index.js');
+const apiRouter = require('./routers/apirouter');
 
 //使用一下中间件 需要安装
 const bodyParser = require('body-parser');
@@ -18,6 +20,12 @@ let upload = multer();
 //#endregion
 
 //#region 用户列表
+
+//添加路由中间件
+app.use('/stu', router);
+//添加api请求的路由中间件
+app.use('/api', apiRouter);
+
 //设置art的模版引擎
 app.engine('art', art_express);
 
