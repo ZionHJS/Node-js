@@ -9,12 +9,15 @@ const multer = require('multer');
 
 const app = express();   //创建一个app对象
 
+//#region 添加中间件
 app.use(bodyParser.json()); // for parsing application/json
 app.use(bodyParser.urlencoded({ extended: true })); // for parsing application/x-www-form-urlencoded
 
 //创建一个upload对象 用于处理form-data方式传递的数据
 let upload = multer();
+//#endregion
 
+//#region 用户列表
 //设置art的模版引擎
 app.engine('art', art_express);
 
@@ -40,9 +43,9 @@ app.get('./user/list', (req,res)=>{
     const data = userService.getPageUsers(page, size);
     res.render('./views/users/userlist2.art', data);
 });
+//#endregion
 
-console.log(11223344555666);
-
+//#region 添加用户
 //添加用户的列表页面
 app.get('./user/add',(req,res)=>{
     res.render('./views/users/add.art');
@@ -67,8 +70,17 @@ app.post('/user/add' ,upload.array() ,(req,res) => {
 
     res.redirect('./user/list');
 });
+//#endregion
+
+//#region 删除操作
+app.get('./user/del',(req,res=>{
+    // res.setEncoding(req.query.id);
+    userService.delUser(parseInt(req.query.id));
+    res.readirect('/user/list');
+})
+
+//#enregion
 
 app.listen(59999, () => {
     console.log('http://127.0.0.1:59999');
-});
-
+})

@@ -93,6 +93,24 @@ describe('userServiceTest',function(){
             msg:'obtain success'
         });
     });
+
+    it('#delUser()',function(){
+        //正常删除数据
+        const t = userService.delUser(20004);
+        t.should.eqls({
+            code:1,
+            msg:'delete success!'
+        });
+        
+        userService.delUser('sdfsf').should.eqls({
+            code:0,
+            msg:'delete failed, id must be larger than 0'
+        });
+        userService.delUser(0).should.eqls({
+            code:0,
+            msg:'delete failed, id must be larger than 0'
+        })
+    })
 });
 
 

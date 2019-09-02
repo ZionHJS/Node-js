@@ -47,7 +47,7 @@ exports.addUser = function(user){
     //user.id //自动赋值id 且id数值唯一 Date.now()
     const newUser = Object.assign({id:Date.now()},user);   //MDN
     dbjson.users.push(newUser);
-    //把数据保存到dbjson文件中
+    //把数据保存到db.json文件中
 
     _saveJson(dbjson);
 
@@ -55,7 +55,24 @@ exports.addUser = function(user){
         msg:'save success!',
         code:1
     }
+}
 
+exports.delUser = function(id){
+    console.log(id);
+    if(typeof(id)==='number' && id>0){
+        const index = dbjson.users.findIndex(u => u.id ==id);
+        console.log(index);
+        dbjson.users.splice(idnex, 1);
+        _saveJson(sbjson);
+        return{
+            code:1,
+            msg:"delte success!"
+        }
+    }
+    return{
+        code:0,
+        msg:'delete failed! id must be bigger than 0'
+    }
 }
 
 //把对象转成 json字符串 并保存到dbjson文件中
