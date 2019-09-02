@@ -33,6 +33,16 @@ app.get('./user/list', (req,res)=>{
 
 console.log(11223344555666);
 
+//添加用户的列表页面
+app.get('./user/add',(req,res)=>{
+    res.render('./views/users/add.art');
+});
+
+app.post('/user/add',(req,res) => {
+    //res.send('ok');
+    res.redirect('./user/list');
+});
+
 app.listen(59999, () => {
     console.log('http://127.0.0.1:59999');
 });

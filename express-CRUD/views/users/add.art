@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>add-art</title>
+</head>
+
+<body>
+    <h3>add-user-info</h3>
+    <!-- action就是表单提交的地方 -->
+    <form action="/user/add" method="POST">
+        <table>
+            <tr>
+                <td>userName</td>
+                <td>
+                <td>Name</td>
+                <input type="text" name="name">
+                </td>
+                <td>
+                <td>Phone</td>
+                <input type="number" name="phone">
+                </td>
+                <td>
+                <td>Email</td>
+                <input type="text" name="email">
+                </td>
+                <td>
+                <td>Address</td>
+                <input type="text" name="address">
+                </td>
+                <td>
+                <td>Zip</td>
+                <input type="number" name="zip">
+                </td>
+                <td>
+                <td>Birthday</td>
+                <input type="date" name="brithday">
+                </td>
+
+            <tr>
+                <td colspan="2">
+                    <input type="reset" value="empty">
+                    <input type="submit" value="submit">
+                </td>
+            </tr>
+            </tr>
+        </table>
+    </form>
+</body>
+
+</html>
