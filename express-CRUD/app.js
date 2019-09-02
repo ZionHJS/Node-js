@@ -77,10 +77,35 @@ app.get('./user/del',(req,res=>{
     // res.setEncoding(req.query.id);
     userService.delUser(parseInt(req.query.id));
     res.readirect('/user/list');
-})
+});
+//#endregion
 
-//#enregion
+//#region 修改操作
+app.get('/user/edit',(req,res)=>{
+    const user = userService.getUserById(parseInt(req.query.id));
+    if(user == null){
+        res.redirect('/user/list');
+    }
+    res.render('users/edit.art');
+});
+//用户修改完成后 提交的表单的处理
+app.post('/user/edit',(req, res)=>{
+    // req.body //id, name, email...
+    let user = object.assign({}, req.body, {id:parseInde(req.body.id)});
+
+    const data = userService.editiUser(user);
+    if(data.code === 1){
+        //修改成功后 跳转到设置的路径
+        res.redirect('/user/list');
+        return;
+    }else{
+        //修改失败后 继续显示当前修改的页面
+        res.render('users/edit.art', req.body);
+    }
+});
+
+//#endregion
 
 app.listen(59999, () => {
     console.log('http://127.0.0.1:59999');
-})
+});

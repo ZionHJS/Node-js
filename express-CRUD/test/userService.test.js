@@ -110,7 +110,15 @@ describe('userServiceTest',function(){
             code:0,
             msg:'delete failed, id must be larger than 0'
         })
-    })
+    });
+
+    it('#getUserById()',function(){
+        should(userService.getUserById(-8)).be.Null();
+        should(userService.getUserById('333')).be.Null();
+        should(userService.getUserById(20000)).be.containEql({
+            id:20000
+        });
+    });
 });
 
 

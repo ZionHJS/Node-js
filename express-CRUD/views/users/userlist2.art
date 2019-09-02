@@ -36,6 +36,7 @@
                 <td>{{val.birthday}}</td>
                 <td>
                     <a class="del" uid="{{val.id}}" href="/user/del?id={{val.id}}">Delete</a>
+                    <a class="edi" uid="{{val.id}}" href="/user/edit?id={{val.id}}">Edit</a>
                 </td>
             </tr>
             {{/each}}
